@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "title": "IMDB Movie Review Sentiment Analysis with TensorFlow and Hub",
+      "description": "The project leverages the power of deep learning and natural language processing techniques to automatically classify the sentiment expressed in movie reviews as positive or negative. By accurately predicting the sentiment of movie reviews, this analysis provides valuable insights into audience perceptions and sentiments towards movies.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/IMDB-Movie-Review-Sentiment-Analysis-with-TensorFlow-and-Hub"
+    },
+    {
+      "title": "App06_29",
+      "description": "The Material 3-Based Android Application is a project aimed at designing and developing an Android application using the latest Material 3 design system. The app is designed to offer users a seamless experience while browsing and interacting with the app's content.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/App06_29"
+    },
+    {
+      "title": "Avocado price trends by region",
+      "description": "This project analyzes regional variations in avocado prices in the United States from 2015 to 2018, with a focus on comparing prices between the Northeast and other regions. The analysis is based on data from Gapminder.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/Avocado_Price_Trends_by_Region"
+    },
+    {
+      "title": "Data Visualization",
+      "description": "This Python data science project aims to provide a comprehensive dashboard that displays insights into the COVID-19 situation in various countries using the powerful data analysis libraries Numpy, Pandas, and Tkinter. The dashboard presents vital information such as the number of confirmed cases, deaths, and recoveries in different countries, including trends and comparisons between countries.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/Data_Visualization"
+    },
+    {
+      "title": "Automated File Organizer",
+      "description": "This Python script is designed to help you quickly and easily organize files in a directory based on their file type. The organize_junk function takes no arguments and works by scanning the current directory for files and then moving them to their respective subdirectories based on their file type.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/Automated_File_Organizer"
+    },
+    {
+      "title": "Pharmnet",
+      "description": "PharmNet is an online e-commerce website built with ASP.net. The website provides various functionalities such as add to cart, login, signup, buy products, and search for products.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/Pharmnet"
+    },
+    {
+      "title": "GDP and Life Expectancy Animation",
+      "description": "This code is designed to create an animated graph that shows the relationship between GDP per capita and life expectancy over time, using data from the gapminder dataset. The animation highlights changes in these variables by continent and year.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/GDP_Growth"
+    },
+    {
+      "title": "Tensorflow Image Extractor",
+      "description": "The Tensorflow Image Extractor project offers a user-friendly interface and a collection of robust image processing algorithms. By leveraging the capabilities of Tensorflow, users can effortlessly analyze and interpret images to gain insights and make informed decisions across various domains, such as computer vision, healthcare, autonomous vehicles, and more.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/Tensorflow_Image_Extractor"
+    },
+    {
+      "title": "Galactic Conquest",
+      "description": "Welcome to Galactic Conquest, an immersive space battle game that will transport you to the far reaches of the universe. Prepare for an epic journey filled with intense battles, strategic decision-making, and the thrill of conquering the galaxy.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/Galactic_Conquest"
+    }
+  ]
+}
