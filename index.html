@@ -56,7 +56,16 @@
 
         function addVisitorInformation() {
           // Get additional information
-          const currentTime = new Date().toLocaleString();
+          const currentTime = new Date().toLocaleString("en-US", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            hour12: true,
+          });
+
           const browser = getBrowserName();
           const device = getDeviceType();
           const version = getDeviceVersion();
@@ -114,25 +123,46 @@
 
         function getDeviceVersion() {
           const userAgent = navigator.userAgent;
+          let os = "Unknown";
+          let version = "Unknown";
+
           if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            // iOS device
+            os = "iOS";
             const match = userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
-            return match ? match.slice(1).map(Number).join(".") : "Unknown";
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
           } else if (/Android/.test(userAgent)) {
-            // Android device
+            os = "Android";
             const match = userAgent.match(/Android (\d+)\.?(\d+)?\.?(\d+)?/);
-            return match ? match.slice(1).map(Number).join(".") : "Unknown";
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
           } else if (/Mac/.test(userAgent)) {
-            // macOS device
+            os = "macOS";
             const match = userAgent.match(/Mac OS X (\d+)[_.](\d+)[_.](\d+)/);
-            return match ? match.slice(1).map(Number).join(".") : "Unknown";
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
+          } else if (/Windows/.test(userAgent)) {
+            os = "Windows";
+            const match = userAgent.match(/Windows NT (\d+)\.?(\d+)?/);
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
           } else {
-            // Other devices (return browser version)
             const match = userAgent.match(
-              /(Firefox|Chrome|Safari|Opera|Edge|IE)\/(\d+)/
+              /(?:Firefox|Chrome|Safari|Opera|Edge|IE)\/(\d+)/
             );
-            return match ? match.slice(2).map(Number).join(".") : "Unknown";
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
           }
+
+          return {
+            os: os,
+            version: version,
+          };
         }
       }
     </script>
@@ -304,10 +334,11 @@
               ><span class="cursor">&nbsp;</span>
             </h1>
             <p class="animate-left">
-              A highly organized, innovative, and goal-driven undergraduate with
-              exceptional communication, problem-solving, and leadership
-              abilities, coupled with a passion for exploring the vast realm of
-              Information Technology.
+              A highly <b>organized</b>, <b>innovative</b>, and
+              <b>goal-driven</b> undergraduate with
+              <b>exceptional communication</b>, <b>problem-solving</b>, and
+              <b>leadership abilities</b>, coupled with a <b>passion</b> for exploring
+              the vast realm of <code>Information Technology</code>.
             </p>
             <div class="mt-sm-5 mt-4 animate-left">
               <a class="btn btn-primary btn-style mr-sm-2" href="projects.html"

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <title>V DevStack</title>
 
@@ -12,13 +14,21 @@
     <link rel="icon" type="image/svg+xml" href="assets/images/code.svg" />
 
     <!-- google fonts -->
-    <link href="//fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link
+      href="//fonts.googleapis.com/css2?family=Jost:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css" />
-</head>
 
-<body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
     <!-- <script>
     // Function to animate the fly-in effect for the navbar brand and the fade-in effect for navigation items and toggle switch
     function animateNavbarItems() {
@@ -49,432 +59,702 @@
 
     <!-- header -->
     <header id="site-header" class="fixed-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg stroke">
-                <a class="navbar-brand" href="index.html">
-                    <span class="fa fa-code"></span>
-                    V <b class="mainTitle">DevStack</b>
-                </a>
-                <button class="navbar-toggler collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
-                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
-                </button>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg stroke">
+          <a class="navbar-brand" href="index.html">
+            <span class="fa fa-code"></span>
+            V <b class="mainTitle">DevStack</b>
+          </a>
+          <button
+            class="navbar-toggler collapsed bg-gradient"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+            <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+          </button>
 
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item @@index__active">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item @@about__active">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item @@projects__active">
-                            <a class="nav-link" href="projects.html">Projects</a>
-                        </li>
-                        <li class="nav-item @@designs__active">
-                            <a class="nav-link" href="designs.html">Designs</a>
-                        </li>
-                        <li class="nav-item @@contact__active">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                        <li id="statsNavItem" class="nav-item active" style="display: none;">
-                            <a class="nav-link" href="stats.html">Stats</a>
-                        </li>
-                        <li id="logoutNavItem" class="nav-item" style="display: none;">
-                            <a class="nav-link" href="#" onclick="logout()">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item @@index__active">
+                <a class="nav-link" href="index.html"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item @@about__active">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item @@projects__active">
+                <a class="nav-link" href="projects.html">Projects</a>
+              </li>
+              <li class="nav-item @@designs__active">
+                <a class="nav-link" href="designs.html">Designs</a>
+              </li>
+              <li class="nav-item @@contact__active">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+              <li
+                id="statsNavItem"
+                class="nav-item active"
+                style="display: none"
+              >
+                <a class="nav-link" href="stats.html">Stats</a>
+              </li>
+              <li id="logoutNavItem" class="nav-item" style="display: none">
+                <a class="nav-link" href="#" onclick="logout()">Logout</a>
+              </li>
+            </ul>
+          </div>
 
-                <script>
-                    var email = localStorage.getItem("email");
-                    var statsNavItem = document.getElementById("statsNavItem");
-                    var logoutNavItem = document.getElementById("logoutNavItem");
+          <script>
+            var email = localStorage.getItem("email");
+            var statsNavItem = document.getElementById("statsNavItem");
+            var logoutNavItem = document.getElementById("logoutNavItem");
 
-                    if (email) {
-                        // Email exists, unhide the list items for stats and logout
-                        statsNavItem.style.display = "block";
-                        logoutNavItem.style.display = "block";
-                    } else {
-                        // Email does not exist, hide the list items for stats and logout
-                        statsNavItem.style.display = "none";
-                        logoutNavItem.style.display = "none";
-                    }
+            if (email) {
+              // Email exists, unhide the list items for stats and logout
+              statsNavItem.style.display = "block";
+              logoutNavItem.style.display = "block";
+            } else {
+              // Email does not exist, hide the list items for stats and logout
+              statsNavItem.style.display = "none";
+              logoutNavItem.style.display = "none";
+            }
 
-                    function logout() {
-                        // Remove the email from localStorage
-                        localStorage.removeItem("email");
+            function logout() {
+              // Remove the email from localStorage
+              localStorage.removeItem("email");
 
-                        // Perform any additional logout actions if needed
+              // Perform any additional logout actions if needed
 
-                        alert("Logout Successfully");
+              alert("Logout Successfully");
 
-                        // Redirect the user to the desired page
-                        window.location.href = "index.html"; // Replace "index" with the appropriate page URL
-                    }
-                </script>
+              // Redirect the user to the desired page
+              window.location.href = "index.html"; // Replace "index" with the appropriate page URL
+            }
+          </script>
 
-                <!-- toggle switch for light and dark theme -->
-                <div class="mobile-position">
-                    <nav class="navigation">
-                        <div class="theme-switch-wrapper">
-                            <label class="theme-switch" for="checkbox">
-                                <input type="checkbox" id="checkbox" />
-                                <div class="mode-container">
-                                    <i class="gg-sun"></i>
-                                    <i class="gg-moon"></i>
-                                </div>
-                            </label>
-                        </div>
-                    </nav>
-                </div>
-                <!-- //toggle switch for light and dark theme -->
+          <!-- toggle switch for light and dark theme -->
+          <div class="mobile-position">
+            <nav class="navigation">
+              <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                  <input type="checkbox" id="checkbox" />
+                  <div class="mode-container">
+                    <i class="gg-sun"></i>
+                    <i class="gg-moon"></i>
+                  </div>
+                </label>
+              </div>
             </nav>
-        </div>
+          </div>
+          <!-- //toggle switch for light and dark theme -->
+        </nav>
+      </div>
     </header>
     <!-- //header -->
 
     <!-- projects breadcrumb -->
     <section class="w3l-about-breadcrumb text-center">
-        <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
-            <div class="container py-2">
-                <h2 class="title">Projects</h2>
-                <ul class="breadcrumbs-custom-path mt-2">
-                    <li><a href="index.html">Home</a></li>
-                    <li><i class="fa fa-angle-right mx-2" aria-hidden="true"></i></li>
-                    <li class="active">Projects</li>
-                </ul>
-            </div>
+      <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-2">
+          <h2 class="title">Statistics</h2>
+          <ul class="breadcrumbs-custom-path mt-2">
+            <li><a href="index.html">Home</a></li>
+            <li><i class="fa fa-angle-right mx-2" aria-hidden="true"></i></li>
+            <li class="active">Statistics</li>
+          </ul>
         </div>
+      </div>
     </section>
     <!-- //projects breadcrumb -->
 
     <!-- gallery block -->
     <section class="w3l-services">
-        <div class="blog py-5" id="services">
-            <div class="container py-lg-5">
-                <h2 class="title-small text-center mb-4">Project Gallery</h2>
-                <h3 class="title-big text-center mb-sm-5 mb-4 text-center">
-                    Explore some of the projects I have worked on.
-                </h3>
-                <div class="row gallery" id="projectGallery">
-                    <!-- Project items will be dynamically added here -->
-                </div>
-                <div id="graph-container"></div>
-                <div class="text-center mt-4">
-                    <button id="showMoreBtn" class="btn btn-outline-primary btn-style">
-                        Show More
-                    </button>
-                </div>
-            </div>
+      <div class="w3l-achievements py-5" id="services">
+        <div class="container py-lg-5">
+          <h2 class="title-small text-center mb-4">Website Statistics</h2>
+          <h3 class="title-big text-center mb-sm-5 mb-4 text-center">
+            Explore the statistics and data of our website.
+          </h3>
+
+          <!-- Visitor Table -->
+          <h4 class="text-center mb-3">Visitor Table</h4>
+          <div class="table-responsive mt-2">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th><h5>Sr No</h5></th>
+                  <th><h5>Browser</h5></th>
+                  <th><h5>Date</h5></th>
+                  <th><h5>Time</h5></th>
+                  <th><h5>Device</h5></th>
+                  <th><h5>Version</h5></th>
+                  <th><h5>Document ID</h5></th>
+                </tr>
+              </thead>
+              <tbody id="visitor-data"></tbody>
+            </table>
+          </div>
+          <div class="mt-2 text-center">
+            <button
+              class="btn btn-primary btn-style mr-sm-2"
+              id="show-more-visitor-btn"
+            >
+              Show more
+            </button>
+            <button
+              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1"
+              id="hide-all-visitor-btn"
+            >
+              Hide all
+            </button>
+          </div>
+
+          <!-- Contact Table -->
+          <h4 class="text-center mb-3 mt-5">Contact Table</h4>
+          <div class="table-responsive mt-2">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th><h5>Sr No</h5></th>
+                  <th><h5>Name</h5></th>
+                  <th><h5>Email</h5></th>
+                  <th><h5>Phone</h5></th>
+                  <th><h5>Subject</h5></th>
+                  <th><h5>Date</h5></th>
+                  <th><h5>Time</h5></th>
+                  <th><h5>Message</h5></th>
+                  <th><h5>Version</h5></th>
+                  <th><h5>Document Id</h5></th>
+                </tr>
+              </thead>
+              <tbody id="contact-data"></tbody>
+            </table>
+          </div>
+          <div class="mt-2 text-center">
+            <button
+              class="btn btn-primary btn-style mr-sm-2"
+              id="show-more-contact-btn"
+            >
+              Show more
+            </button>
+            <button
+              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1"
+              id="hide-all-contact-btn"
+            >
+              Hide all
+            </button>
+          </div>
+
+          <!-- Subscribed Table -->
+          <h4 class="text-center mb-3 mt-5">Subscribe Table</h4>
+          <div class="table-responsive mt-2">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th><h5>Sr No</h5></th>
+                  <th><h5>Email</h5></th>
+                  <th><h5>Date</h5></th>
+                  <th><h5>Time</h5></th>
+                  <th><h5>Device</h5></th>
+                  <th><h5>Version</h5></th>
+                  <th><h5>Documnet Id</h5></th>
+                </tr>
+              </thead>
+              <tbody id="subscribed-data"></tbody>
+            </table>
+          </div>
+          <div class="mt-2 text-center">
+            <button
+              class="btn btn-primary btn-style mr-sm-2"
+              id="show-more-subscribed-btn"
+            >
+              Show more
+            </button>
+            <button
+              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1"
+              id="hide-all-subscribed-btn"
+            >
+              Hide all
+            </button>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Include D3.js library -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-
     <script>
-        // Sample data representing the number of visitors, subscriptions, and contacts over time
-        const visitorData = [{
-                date: "2023-01-01",
-                count: 50
-            },
-            {
-                date: "2023-02-01",
-                count: 80
-            },
-            {
-                date: "2023-03-01",
-                count: 120
-            },
-            // Add more data points as needed
-        ];
+      // Initialize Firebase
+      var firebaseConfig = {
+        apiKey: "AIzaSyA47iY8c2PMNOEP_GD1CgG-60Dvp-1NTGg",
+        authDomain: "v-devstack.firebaseapp.com",
+        projectId: "v-devstack",
+        storageBucket: "v-devstack.appspot.com",
+        messagingSenderId: "124914226391",
+        appId: "1:124914226391:web:978e6518d3220627630c92",
+        measurementId: "G-H177XK6L62",
+      };
 
-        const subscribeData = [{
-                date: "2023-01-01",
-                count: 10
-            },
-            {
-                date: "2023-02-01",
-                count: 20
-            },
-            {
-                date: "2023-03-01",
-                count: 15
-            },
-            // Add more data points as needed
-        ];
+      firebase.initializeApp(firebaseConfig);
 
-        const contactData = [{
-                date: "2023-01-01",
-                count: 5
-            },
-            {
-                date: "2023-02-01",
-                count: 8
-            },
-            {
-                date: "2023-03-01",
-                count: 12
-            },
-            // Add more data points as needed
-        ];
+      var visitorRef = firebase.database().ref("Visitor");
+      var contactRef = firebase.database().ref("Contact");
 
-        // Parse dates from the data
-        const parseDate = d3.timeParse("%Y-%m-%d");
-        visitorData.forEach(d => {
-            d.date = parseDate(d.date);
+      var visitorTbody = $("#visitor-data");
+      var showMoreVisitorButton = $("#show-more-visitor-btn");
+      var hideAllVisitorButton = $("#hide-all-visitor-btn");
+      var visitorEntriesToShow = 6;
+      var visitorTotalEntries = 0;
+      var visitorShowButtonClicked = false;
+
+      var contactTbody = $("#contact-data");
+      var showMoreContactButton = $("#show-more-contact-btn");
+      var hideAllContactButton = $("#hide-all-contact-btn");
+      var contactEntriesToShow = 6;
+      var contactTotalEntries = 0;
+      var contactShowButtonClicked = false;
+
+      var subscribedRef = firebase.database().ref("Subscribe");
+      var subscribedTbody = $("#subscribed-data");
+      var showMoreSubscribedButton = $("#show-more-subscribed-btn");
+      var hideAllSubscribedButton = $("#hide-all-subscribed-btn");
+      var subscribedEntriesToShow = 6;
+      var subscribedTotalEntries = 0;
+      var subscribedShowButtonClicked = false;
+
+      // Function to fetch and display visitor data
+      function fetchVisitorData() {
+        // Retrieve data from visitorRef
+        visitorRef.once("value", function (snapshot) {
+          var visitorData = snapshot.val();
+
+          // Clear existing table data and reset variables
+          visitorTbody.empty();
+          visitorTotalEntries = 0;
+          visitorShowButtonClicked = false;
+
+          if (visitorData) {
+            // Sort visitorData based on currentTime in descending order
+            var visitorArray = Object.entries(visitorData).sort(
+              (a, b) => new Date(b[1].currentTime) - new Date(a[1].currentTime)
+            );
+
+            // Iterate through visitorArray and create table rows
+            visitorArray.forEach(function (visitor, index) {
+              var key = visitor[0];
+              var data = visitor[1];
+
+              // Determine the version string based on OS and version
+              var version =
+                data.version.os === "Unknown"
+                  ? data.version
+                  : `${data.version.os} ${data.version.version}`;
+
+              // Create table row with visitor information
+              var row = $(`
+          <tr>
+            <td><h6>${index + 1}</h6></td>
+            <td><h6>${data.browser}</h6></td>
+            <td><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
+            <td><h6>${new Date(data.currentTime).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            })}</h6></td>
+            <td><h6>${data.device}</h6></td>
+            <td><h6>${version}</h6></td>
+            <td><h6>${key}</h6></td>
+          </tr>
+        `);
+
+              // Show or hide the row based on the number of entries to show
+              if (index < visitorEntriesToShow) {
+                row.show();
+              } else {
+                row.hide();
+              }
+
+              // Append the row to the table body and update total entry count
+              visitorTbody.append(row);
+              visitorTotalEntries++;
+            });
+
+            // Disable or enable the show more button based on the total entry count
+            showMoreVisitorButton.prop(
+              "disabled",
+              visitorTotalEntries <= visitorEntriesToShow
+            );
+          } else {
+            // Display a message when no data is found
+            var emptyRow = $(`
+        <tr>
+          <td colspan="7"><h6 class="text-center">Oops No data found 🥲</h6></td>
+        </tr>
+      `);
+            visitorTbody.append(emptyRow);
+            showMoreVisitorButton.prop("disabled", true);
+          }
+
+          // Disable the hide all button
+          hideAllVisitorButton.prop("disabled", true);
         });
-        subscribeData.forEach(d => {
-            d.date = parseDate(d.date);
+      }
+
+      // Fetch visitor data initially and on any changes
+      fetchVisitorData();
+      visitorRef.on("value", fetchVisitorData);
+
+      // Event handler for show more button click
+      showMoreVisitorButton.click(function () {
+        visitorShowButtonClicked = true;
+        var visibleRows = visitorTbody.find("tr:visible").length;
+        var rowsToShow = Math.min(
+          visitorEntriesToShow,
+          visitorTotalEntries - visibleRows
+        );
+
+        // Slide down the hidden rows and update button states
+        visitorTbody
+          .find("tr:hidden:lt(" + rowsToShow + ")")
+          .slideDown("slow", function () {
+            var visibleRowsCount = visitorTbody.find("tr:visible").length;
+            showMoreVisitorButton.prop(
+              "disabled",
+              visibleRowsCount === visitorTotalEntries
+            );
+            hideAllVisitorButton.prop("disabled", false);
+          });
+      });
+
+      // Event handler for hide all button click
+      hideAllVisitorButton.click(function () {
+        visitorTbody
+          .find("tr:gt(" + (visitorEntriesToShow - 1) + ")")
+          .slideUp("slow", function () {
+            visitorShowButtonClicked = false;
+            hideAllVisitorButton.prop("disabled", true);
+            showMoreVisitorButton.prop("disabled", false);
+          });
+      });
+
+      // Disable the hide all button initially
+      hideAllVisitorButton.prop("disabled", true);
+
+      // Function to fetch and display contact data
+      function fetchContactData() {
+        // Retrieve data from contactRef
+        contactRef.once("value", function (snapshot) {
+          var contactData = snapshot.val();
+
+          // Clear existing table data and reset variables
+          contactTbody.empty();
+          contactTotalEntries = 0;
+          contactShowButtonClicked = false;
+
+          if (contactData) {
+            // Sort contactData based on currentTime in descending order
+            var contactArray = Object.entries(contactData).sort(
+              (a, b) => new Date(b[1].currentTime) - new Date(a[1].currentTime)
+            );
+
+            // Iterate through contactArray and create table rows
+            contactArray.forEach(function (contact, index) {
+              var key = contact[0];
+              var data = contact[1];
+
+              // Determine the version string based on OS and version
+              var version =
+                data.version.os === "Unknown"
+                  ? data.version
+                  : `${data.version.os} ${data.version.version}`;
+
+              // Create table row with contact information
+              var row = $(`
+          <tr>
+            <td><h6>${index + 1}</h6></td>
+            <td><h6>${data.name}</h6></td>
+            <td><h6>${data.email}</h6></td>
+            <td><h6>${data.phone}</h6></td>
+            <td><h6>${data.subject}</h6></td>
+            <td><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
+            <td><h6>${new Date(data.currentTime).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            })}</h6></td>
+            <td><h6>${data.message}</h6></td>
+            <td><h6>${version}</h6></td>
+            <td><h6>${key}</h6></td>
+          </tr>
+        `);
+
+              // Show or hide the row based on the number of entries to show
+              if (index < contactEntriesToShow) {
+                row.show();
+              } else {
+                row.hide();
+              }
+
+              // Append the row to the table body and update total entry count
+              contactTbody.append(row);
+              contactTotalEntries++;
+            });
+
+            // Disable or enable the show more button based on the total entry count
+            showMoreContactButton.prop(
+              "disabled",
+              contactTotalEntries <= contactEntriesToShow
+            );
+          } else {
+            // Display a message when no data is found
+            var emptyRow = $(`
+        <tr>
+          <td colspan="11"><h6 class="text-center">Oops No data found 🥲</h6></td>
+        </tr>
+      `);
+            contactTbody.append(emptyRow);
+            showMoreContactButton.prop("disabled", true);
+          }
+
+          // Disable the hide all button
+          hideAllContactButton.prop("disabled", true);
         });
-        contactData.forEach(d => {
-            d.date = parseDate(d.date);
+      }
+
+      // Fetch contact data initially and on any changes
+      fetchContactData();
+      contactRef.on("value", fetchContactData);
+
+      // Event handler for show more button click
+      showMoreContactButton.click(function () {
+        contactShowButtonClicked = true;
+        var visibleRows = contactTbody.find("tr:visible").length;
+        var rowsToShow = Math.min(
+          contactEntriesToShow,
+          contactTotalEntries - visibleRows
+        );
+
+        // Slide down the hidden rows and update button states
+        contactTbody
+          .find("tr:hidden:lt(" + rowsToShow + ")")
+          .slideDown("slow", function () {
+            var visibleRowsCount = contactTbody.find("tr:visible").length;
+            showMoreContactButton.prop(
+              "disabled",
+              visibleRowsCount === contactTotalEntries
+            );
+            hideAllContactButton.prop("disabled", false);
+          });
+      });
+
+      // Event handler for hide all button click
+      hideAllContactButton.click(function () {
+        contactTbody
+          .find("tr:gt(" + (contactEntriesToShow - 1) + ")")
+          .slideUp("slow", function () {
+            contactShowButtonClicked = false;
+            hideAllContactButton.prop("disabled", true);
+            showMoreContactButton.prop("disabled", false);
+          });
+      });
+
+      // Disable the hide all button initially
+      hideAllContactButton.prop("disabled", true);
+
+      // Function to fetch and display subscribed data
+      function fetchSubscribedData() {
+        subscribedRef.once("value", function (snapshot) {
+          var subscribedData = snapshot.val();
+
+          // Clear the existing table data and reset variables
+          subscribedTbody.empty();
+          subscribedTotalEntries = 0;
+          subscribedShowButtonClicked = false;
+
+          if (subscribedData) {
+            // Sort subscribedData based on subscribedTime in descending order
+            var subscribedArray = Object.entries(subscribedData).sort(
+              (a, b) =>
+                new Date(b[1].subscribedTime) - new Date(a[1].subscribedTime)
+            );
+
+            // Iterate through subscribedArray and create table rows
+            subscribedArray.forEach(function (subscribed, index) {
+              var key = subscribed[0];
+              var data = subscribed[1];
+              var version =
+                data.version.os === "Unknown"
+                  ? data.version
+                  : `${data.version.os} ${data.version.version}`;
+
+              // Create a table row with subscribed information
+              var row = $(`
+          <tr>
+            <td><h6>${index + 1}</h6></td>
+            <td><h6>${data.email}</h6></td>
+            <td><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
+            <td><h6>${new Date(data.currentTime).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            })}</h6></td>
+            <td><h6>${data.device}</h6></td>
+            <td><h6>${version}</h6></td>
+            <td><h6>${key}</h6></td>
+          </tr>
+        `);
+
+              // Show or hide the row based on the number of entries to show
+              if (index < subscribedEntriesToShow) {
+                row.show();
+              } else {
+                row.hide();
+              }
+
+              // Append the row to the table body and update the total entry count
+              subscribedTbody.append(row);
+              subscribedTotalEntries++;
+            });
+
+            // Disable or enable the "Show More" button based on the total entry count
+            showMoreSubscribedButton.prop(
+              "disabled",
+              subscribedTotalEntries <= subscribedEntriesToShow
+            );
+          } else {
+            // Display a message when no data is found
+            var emptyRow = $(`
+        <tr>
+          <td colspan="8"><h6 class="text-center">Oops, no data found 🥲</h6></td>
+        </tr>
+      `);
+            subscribedTbody.append(emptyRow);
+            showMoreSubscribedButton.prop("disabled", true);
+          }
+
+          // Disable the "Hide All" button
+          hideAllSubscribedButton.prop("disabled", true);
         });
+      }
 
-        // Set up the graph dimensions
-        const margin = {
-            top: 20,
-            right: 20,
-            bottom: 30,
-            left: 50
-        };
-        const width = window.innerWidth - margin.left - margin.right;
-        const height = 400 - margin.top - margin.bottom;
+      // Fetch subscribed data initially and on any changes
+      fetchSubscribedData();
+      subscribedRef.on("value", fetchSubscribedData);
 
-        // Create SVG element
-        const svg = d3.select("#graph-container")
-            .append("svg")
-            .attr("width", "100%")
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", `translate(${margin.left},${margin.top})`);
+      // Event handler for "Show More" button click
+      showMoreSubscribedButton.click(function () {
+        subscribedShowButtonClicked = true;
+        var visibleRows = subscribedTbody.find("tr:visible").length;
+        var rowsToShow = Math.min(
+          subscribedEntriesToShow,
+          subscribedTotalEntries - visibleRows
+        );
 
-        // Set up x-axis scale
-        const x = d3.scaleTime()
-            .domain(d3.extent(visitorData, d => d.date))
-            .range([0, width]);
+        // Slide down the hidden rows and update button states
+        subscribedTbody
+          .find("tr:hidden:lt(" + rowsToShow + ")")
+          .slideDown("slow", function () {
+            var visibleRowsCount = subscribedTbody.find("tr:visible").length;
+            showMoreSubscribedButton.prop(
+              "disabled",
+              visibleRowsCount === subscribedTotalEntries
+            );
+            hideAllSubscribedButton.prop("disabled", false);
+          });
+      });
 
-        // Set up y-axis scale
-        const y = d3.scaleLinear()
-            .domain([0, d3.max(visitorData, d => d.count)])
-            .range([height, 0]);
+      // Event handler for "Hide All" button click
+      hideAllSubscribedButton.click(function () {
+        subscribedTbody
+          .find("tr:gt(" + (subscribedEntriesToShow - 1) + ")")
+          .slideUp("slow", function () {
+            subscribedShowButtonClicked = false;
+            hideAllSubscribedButton.prop("disabled", true);
+            showMoreSubscribedButton.prop(
+              "disabled",
+              subscribedTotalEntries <= subscribedEntriesToShow
+            );
+          });
+      });
 
-        // Create x-axis
-        svg.append("g")
-            .attr("transform", `translate(0,${height})`)
-            .call(d3.axisBottom(x));
-
-        // Create y-axis
-        svg.append("g")
-            .call(d3.axisLeft(y));
-
-        // Create visitor line
-        const visitorLine = d3.line()
-            .x(d => x(d.date))
-            .y(d => y(d.count));
-
-        svg.append("path")
-            .datum(visitorData)
-            .attr("class", "line")
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2)
-            .attr("d", visitorLine)
-            .call(animatePath);
-
-        // Create subscribe line
-        const subscribeLine = d3.line()
-            .x(d => x(d.date))
-            .y(d => y(d.count));
-
-        svg.append("path")
-            .datum(subscribeData)
-            .attr("class", "line")
-            .attr("fill", "none")
-            .attr("stroke", "green")
-            .attr("stroke-width", 2)
-            .attr("d", subscribeLine)
-            .call(animatePath);
-
-        // Create contact line
-        const contactLine = d3.line()
-            .x(d => x(d.date))
-            .y(d => y(d.count));
-
-        svg.append("path")
-            .datum(contactData)
-            .attr("class", "line")
-            .attr("fill", "none")
-            .attr("stroke", "red")
-            .attr("stroke-width", 2)
-            .attr("d", contactLine)
-            .call(animatePath);
-
-        // Animate the path
-        function animatePath(path) {
-            const length = path.node().getTotalLength();
-            path.attr("stroke-dasharray", length + " " + length)
-                .attr("stroke-dashoffset", length)
-                .transition()
-                .duration(2000)
-                .ease(d3.easeLinear)
-                .attr("stroke-dashoffset", 0);
-        }
-
-        // Add dots to the graph
-        svg.selectAll(".dot")
-            .data(visitorData)
-            .enter()
-            .append("circle")
-            .attr("class", "dot")
-            .attr("cx", d => x(d.date))
-            .attr("cy", d => y(d.count))
-            .attr("r", 5)
-            .call(animateDots);
-
-        // Animate the dots
-        function animateDots(dot) {
-            dot.attr("opacity", 0)
-                .transition()
-                .duration(2000)
-                .delay((d, i) => i * 100)
-                .attr("opacity", 1);
-        }
-
-        // Handle window resize for responsiveness
-        function handleResize() {
-            const newWidth = window.innerWidth - margin.left - margin.right;
-
-            // Update the x-axis scale
-            x.range([0, newWidth]);
-
-            // Update the SVG width
-            svg.attr("width", "100%");
-
-            // Update the line paths
-            svg.selectAll(".line")
-                .attr("d", d => {
-                    if (d === visitorData) return visitorLine(d);
-                    if (d === subscribeData) return subscribeLine(d);
-                    if (d === contactData) return contactLine(d);
-                });
-
-            // Update the dots
-            svg.selectAll(".dot")
-                .attr("cx", d => x(d.date));
-
-            // Update the x-axis
-            svg.select(".x-axis")
-                .call(d3.axisBottom(x));
-        }
-
-        // Call handleResize function on window resize event
-        window.addEventListener("resize", handleResize);
+      // Disable the "Hide All" button initially
+      hideAllSubscribedButton.prop("disabled", true);
     </script>
-    <style>
-        /* CSS styling for the graph container */
-        #graph-container {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* CSS styling for responsive graph */
-        svg {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* CSS styling for animated line */
-        .line {
-            fill: none;
-            stroke-width: 2;
-        }
-
-        /* CSS styling for animated dots */
-        .dot {
-            fill: steelblue;
-            stroke: steelblue;
-            stroke-width: 2;
-        }
-    </style>
-    <!-- <style>
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .item {
-            transition: 0.2s ease-in-out;
-        }
-
-        .item:hover,
-        .item:focus {
-            border-radius: 0.625rem;
-            transform: scale(1.05) rotateX(-10deg) rotateY(5deg);
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-        }
-    </style> -->
 
     <!-- //gallery block -->
 
     <!-- Footer -->
     <section class="w3l-footer py-sm-5 py-4">
-        <div class="container">
-            <div class="footer-content">
-                <div class="row">
-                    <div class="col-lg-8 footer-left">
-                        <p class="m-0">
-                            &copy; 2023 V <b>DevStack</b>. Designed by
-                            <a href="index.html">Vivek Padia</a>
-                        </p>
-                    </div>
-                    <div class="col-lg-4 footer-right text-lg-right text-center mt-lg-0 mt-3">
-                        <ul class="social m-0 p-0">
-                            <li>
-                                <a href="https://www.facebook.com/vikky.padia" target="_blank"><span class="fa fa-facebook-square"></span></a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/vivek-padia-4a30601b5/" target="_blank"><span class="fa fa-linkedin-square"></span></a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/_vivek_padia_/" target="_blank"><span class="fa fa-instagram"></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="row">
+            <div class="col-lg-8 footer-left">
+              <p class="m-0">
+                &copy; 2023 V <b>DevStack</b>. Designed by
+                <a href="index.html">Vivek Padia</a>
+              </p>
             </div>
+            <div
+              class="col-lg-4 footer-right text-lg-right text-center mt-lg-0 mt-3"
+            >
+              <ul class="social m-0 p-0">
+                <li>
+                  <a href="https://www.facebook.com/vikky.padia" target="_blank"
+                    ><span class="fa fa-facebook-square"></span
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/vivek-padia-4a30601b5/"
+                    target="_blank"
+                    ><span class="fa fa-linkedin-square"></span
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/_vivek_padia_/"
+                    target="_blank"
+                    ><span class="fa fa-instagram"></span
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Scroll to top button -->
-        <button onclick="topFunction()" id="movetop" title="Go to top">
-            <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-        </button>
-        <script>
-            // Show the "scroll to top" button when the user scrolls down 20px from the top
-            window.onscroll = function() {
-                scrollFunction();
-            };
+      <!-- Scroll to top button -->
+      <button onclick="topFunction()" id="movetop" title="Go to top">
+        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+      </button>
+      <script>
+        // Show the "scroll to top" button when the user scrolls down 20px from the top
+        window.onscroll = function () {
+          scrollFunction();
+        };
 
-            function scrollFunction() {
-                if (
-                    document.body.scrollTop > 20 ||
-                    document.documentElement.scrollTop > 20
-                ) {
-                    document.getElementById("movetop").style.display = "block";
-                } else {
-                    document.getElementById("movetop").style.display = "none";
-                }
-            }
+        function scrollFunction() {
+          if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+          ) {
+            document.getElementById("movetop").style.display = "block";
+          } else {
+            document.getElementById("movetop").style.display = "none";
+          }
+        }
 
-            // When the user clicks on the button, scroll to the top of the document
-            function topFunction() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            }
-        </script>
-        <!-- /Scroll to top button -->
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+      </script>
+      <!-- /Scroll to top button -->
     </section>
     <!-- //Footer -->
 
@@ -488,236 +768,85 @@
 
     <!-- /typig-text-->
     <script>
-        // Disable right-click
-        document.addEventListener("contextmenu", function(e) {
-            e.preventDefault();
-        });
+      // Disable right-click
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
 
-        // Disable Ctrl key
-        document.addEventListener("keydown", function(e) {
-            if (e.ctrlKey) {
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
-            }
-        });
-
-        // Disable F12 key
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "F12" || e.keyCode === 123) {
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
-            }
-        });
-
-        const typedTextSpan = document.querySelector(".typed-text");
-        const cursorSpan = document.querySelector(".cursor");
-
-        const textArray = [
-            "UI/UX Designer",
-            "Freelancer",
-            "Full stack developer",
-            "QA",
-        ];
-        const typingDelay = 200;
-        const erasingDelay = 10;
-        const newTextDelay = 100; // Delay between current and next text
-        let textArrayIndex = 0;
-        let charIndex = 0;
-
-        function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                if (!cursorSpan.classList.contains("typing"))
-                    cursorSpan.classList.add("typing");
-                typedTextSpan.textContent +=
-                    textArray[textArrayIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingDelay);
-            } else {
-                cursorSpan.classList.remove("typing");
-                setTimeout(erase, newTextDelay);
-            }
+      // Disable Ctrl key
+      document.addEventListener("keydown", function (e) {
+        if (e.ctrlKey) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
         }
+      });
 
-        function erase() {
-            if (charIndex > 0) {
-                // add class 'typing' if there's none
-                if (!cursorSpan.classList.contains("typing")) {
-                    cursorSpan.classList.add("typing");
-                }
-                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, 0);
-                charIndex--;
-                setTimeout(erase, erasingDelay);
-            } else {
-                cursorSpan.classList.remove("typing");
-                textArrayIndex++;
-                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                setTimeout(type, typingDelay);
-            }
+      // Disable F12 key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "F12" || e.keyCode === 123) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
         }
+      });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            // On DOM Load initiate the effect
-            if (textArray.length) setTimeout(type, newTextDelay + 250);
-        });
+      const typedTextSpan = document.querySelector(".typed-text");
+      const cursorSpan = document.querySelector(".cursor");
     </script>
     <!-- //typig-text-->
 
     <!-- services owlcarousel -->
     <script src="assets/js/owl.carousel.js"></script>
 
-    <!-- script for services -->
-    <script>
-        $(document).ready(function() {
-            $(".owl-two").owlCarousel({
-                loop: true,
-                margin: 30,
-                nav: false,
-                responsiveClass: true,
-                autoplay: false,
-                autoplayTimeout: 5000,
-                autoplaySpeed: 1000,
-                autoplayHoverPause: false,
-                responsive: {
-                    0: {
-                        items: 1,
-                        nav: false,
-                    },
-                    480: {
-                        items: 1,
-                        nav: false,
-                    },
-                    700: {
-                        items: 1,
-                        nav: false,
-                    },
-                    1090: {
-                        items: 3,
-                        nav: false,
-                    },
-                },
-            });
-        });
-    </script>
-    <!-- //script for services -->
-
-    <!-- script for tesimonials carousel slider -->
-    <script>
-        $(document).ready(function() {
-            $("#owl-demo1").owlCarousel({
-                loop: true,
-                margin: 20,
-                nav: false,
-                responsiveClass: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                        nav: false,
-                    },
-                    736: {
-                        items: 1,
-                        nav: false,
-                    },
-                    1000: {
-                        items: 2,
-                        nav: false,
-                        loop: false,
-                    },
-                },
-            });
-        });
-    </script>
-    <!-- //script for tesimonials carousel slider -->
-
-    <!-- video popup -->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".popup-with-zoom-anim").magnificPopup({
-                type: "inline",
-
-                fixedContentPos: false,
-                fixedBgPos: true,
-
-                overflowY: "auto",
-
-                closeBtnInside: true,
-                preloader: false,
-
-                midClick: true,
-                removalDelay: 300,
-                mainClass: "my-mfp-zoom-in",
-            });
-
-            $(".popup-with-move-anim").magnificPopup({
-                type: "inline",
-
-                fixedContentPos: false,
-                fixedBgPos: true,
-
-                overflowY: "auto",
-
-                closeBtnInside: true,
-                preloader: false,
-
-                midClick: true,
-                removalDelay: 300,
-                mainClass: "my-mfp-slide-bottom",
-            });
-        });
-    </script>
-    <!-- //video popup -->
-
     <!-- stats number counter-->
     <script src="assets/js/jquery.waypoints.min.js"></script>
     <script src="assets/js/jquery.countup.js"></script>
     <script>
-        $(".counter").countUp();
+      $(".counter").countUp();
     </script>
     <!-- //stats number counter -->
 
     <!-- disable body scroll which navbar is in active -->
     <script>
-        $(function() {
-            $(".navbar-toggler").click(function() {
-                $("body").toggleClass("noscroll");
-            });
+      $(function () {
+        $(".navbar-toggler").click(function () {
+          $("body").toggleClass("noscroll");
         });
+      });
     </script>
     <!-- disable body scroll which navbar is in active -->
 
     <!--/MENU-JS-->
     <script>
-        $(window).on("scroll", function() {
-            var scroll = $(window).scrollTop();
+      $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
 
-            if (scroll >= 80) {
-                $("#site-header").addClass("nav-fixed");
-            } else {
-                $("#site-header").removeClass("nav-fixed");
-            }
-        });
+        if (scroll >= 80) {
+          $("#site-header").addClass("nav-fixed");
+        } else {
+          $("#site-header").removeClass("nav-fixed");
+        }
+      });
 
-        //Main navigation Active Class Add Remove
-        $(".navbar-toggler").on("click", function() {
-            $("header").toggleClass("active");
+      //Main navigation Active Class Add Remove
+      $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+      });
+      $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+          if ($(window).width() > 991) {
+            $("header").removeClass("active");
+          }
         });
-        $(document).on("ready", function() {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-            $(window).on("resize", function() {
-                if ($(window).width() > 991) {
-                    $("header").removeClass("active");
-                }
-            });
-        });
+      });
     </script>
     <!--//MENU-JS-->
 
     <!-- bootstrap js -->
     <script src="assets/js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>

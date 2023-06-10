@@ -243,9 +243,18 @@
       const subject = document.getElementById("w3lSubject").value;
       const phone = document.getElementById("w3lPhone").value;
       const message = document.getElementById("w3lMessage").value;
+      const version = getDeviceVersion();
 
       // Retrieve additional information
-      const currentTime = new Date().toLocaleString();
+      const currentTime = new Date().toLocaleString("en-US", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            hour12: true,
+          });
       const browser = getBrowserName();
       const device = getDeviceType();
       getLocation(function(location) {
@@ -259,6 +268,7 @@
             currentTime: currentTime,
             browser: browser,
             device: device,
+            version: version,
             location: location
           })
           .then(function() {
@@ -306,6 +316,50 @@
         return "Desktop";
       }
     }
+
+    function getDeviceVersion() {
+          const userAgent = navigator.userAgent;
+          let os = "Unknown";
+          let version = "Unknown";
+
+          if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            os = "iOS";
+            const match = userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
+          } else if (/Android/.test(userAgent)) {
+            os = "Android";
+            const match = userAgent.match(/Android (\d+)\.?(\d+)?\.?(\d+)?/);
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
+          } else if (/Mac/.test(userAgent)) {
+            os = "macOS";
+            const match = userAgent.match(/Mac OS X (\d+)[_.](\d+)[_.](\d+)/);
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
+          } else if (/Windows/.test(userAgent)) {
+            os = "Windows";
+            const match = userAgent.match(/Windows NT (\d+)\.?(\d+)?/);
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
+          } else {
+            const match = userAgent.match(
+              /(?:Firefox|Chrome|Safari|Opera|Edge|IE)\/(\d+)/
+            );
+            if (match) {
+              version = match.slice(1).map(Number).join(".");
+            }
+          }
+
+          return {
+            os: os,
+            version: version,
+          };
+        }
 
     function getLocation(callback) {
       fetch("https://ipapi.co/json/")
