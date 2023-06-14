@@ -189,13 +189,14 @@
             <table class="table table-hover table-striped">
               <thead>
                 <tr>
-                  <th><h5>Sr No</h5></th>
-                  <th><h5>Browser</h5></th>
-                  <th><h5>Date</h5></th>
-                  <th><h5>Time</h5></th>
-                  <th><h5>Device</h5></th>
-                  <th><h5>Version</h5></th>
-                  <th><h5>Document ID</h5></th>
+                  <th><h5 class="text-center">Sr No</h5></th>
+                  <th><h5 class="text-center">Browser</h5></th>
+                  <th><h5 class="text-center">Date</h5></th>
+                  <th><h5 class="text-center">Time</h5></th>
+                  <th><h5 class="text-center">Device</h5></th>
+                  <th><h5 class="text-center">Version</h5></th>
+                  <th><h5 class="text-center">Document ID</h5></th>
+                  <th><h5 class="text-center">Action</h5></th>
                 </tr>
               </thead>
               <tbody id="visitor-data"></tbody>
@@ -258,13 +259,14 @@
             <table class="table table-hover table-striped">
               <thead>
                 <tr>
-                  <th><h5>Sr No</h5></th>
-                  <th><h5>Email</h5></th>
-                  <th><h5>Date</h5></th>
-                  <th><h5>Time</h5></th>
-                  <th><h5>Device</h5></th>
-                  <th><h5>Version</h5></th>
-                  <th><h5>Documnet Id</h5></th>
+                  <th><h5 class="text-center">Sr No</h5></th>
+                  <th><h5 class="text-center">Email</h5></th>
+                  <th><h5 class="text-center">Date</h5></th>
+                  <th><h5 class="text-center">Time</h5></th>
+                  <th><h5 class="text-center">Device</h5></th>
+                  <th><h5 class="text-center">Version</h5></th>
+                  <th><h5 class="text-center">Documnet Id</h5></th>
+                  <th><h5 class="text-center">Action</h5></th>
                 </tr>
               </thead>
               <tbody id="subscribed-data"></tbody>
@@ -358,17 +360,22 @@
               // Create table row with visitor information
               var row = $(`
           <tr>
-            <td><h6>${index + 1}</h6></td>
-            <td><h6>${data.browser}</h6></td>
-            <td><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
-            <td><h6>${new Date(data.currentTime).toLocaleTimeString([], {
+            <td><h6 class="text-center">${index + 1}</h6></td>
+            <td><h6 class="text-center">${data.browser}</h6></td>
+            <td><h6 class="text-center">${new Date(
+              data.currentTime
+            ).toLocaleDateString()}</h6></td>
+            <td><h6 class="text-center">${new Date(
+              data.currentTime
+            ).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
               hour12: true,
             })}</h6></td>
-            <td><h6>${data.device}</h6></td>
-            <td><h6>${version}</h6></td>
-            <td><h6>${key}</h6></td>
+            <td><h6 class="text-center">${data.device}</h6></td>
+            <td><h6 class="text-center">${version}</h6></td>
+            <td><h6 class="text-center">${key}</h6></td>
+            <td class="text-center"><button class="copy-button btn btn-outline-primary btn-style" data-document-id="${key}">Copy Document ID</button></td>
           </tr>
         `);
 
@@ -393,7 +400,7 @@
             // Display a message when no data is found
             var emptyRow = $(`
         <tr>
-          <td colspan="7"><h6 class="text-center">Oops No data found 🥲</h6></td>
+          <td colspan="8"><h6 class="text-center">Oops No data found 🥲</h6></td>
         </tr>
       `);
             visitorTbody.append(emptyRow);
@@ -444,6 +451,31 @@
 
       // Disable the hide all button initially
       hideAllVisitorButton.prop("disabled", true);
+
+      // Event handler for copy button click
+      $(document).on("click", ".copy-button", function () {
+        var copyButton = $(this);
+        var documentId = copyButton.data("document-id");
+
+        copyToClipboard(documentId);
+
+        // Change button text to "Copied"
+        copyButton.text("Copied!");
+
+        // Revert button text after 0.5 seconds
+        setTimeout(function () {
+          copyButton.text("Copy Document ID");
+        }, 500);
+      });
+
+      // Helper function to copy the Document ID to the clipboard
+      function copyToClipboard(text) {
+        var tempInput = $("<input>");
+        $("body").append(tempInput);
+        tempInput.val(text).select();
+        document.execCommand("copy");
+        tempInput.remove();
+      }
 
       // Function to fetch and display contact data
       function fetchContactData() {
@@ -595,17 +627,18 @@
               // Create a table row with subscribed information
               var row = $(`
           <tr>
-            <td><h6>${index + 1}</h6></td>
-            <td><h6>${data.email}</h6></td>
-            <td><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
-            <td><h6>${new Date(data.currentTime).toLocaleTimeString([], {
+            <td class="text-center"><h6>${index + 1}</h6></td>
+            <td class="text-center"><h6>${data.email}</h6></td>
+            <td class="text-center"><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
+            <td class="text-center"><h6>${new Date(data.currentTime).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
               hour12: true,
             })}</h6></td>
-            <td><h6>${data.device}</h6></td>
-            <td><h6>${version}</h6></td>
-            <td><h6>${key}</h6></td>
+            <td class="text-center"><h6>${data.device}</h6></td>
+            <td class="text-center"><h6>${version}</h6></td>
+            <td class="text-center"><h6>${key}</h6></td>
+            <td class="text-center"><button class="copy-subscribe-button btn btn-outline-primary btn-style" data-document-id="${key}">Copy Document ID</button></td>
           </tr>
         `);
 
@@ -684,6 +717,31 @@
 
       // Disable the "Hide All" button initially
       hideAllSubscribedButton.prop("disabled", true);
+
+      // Event handler for copy button click
+      $(document).on("click", ".copy-subscribe-button", function () {
+        var copyButton = $(this);
+        var documentId = copyButton.data("document-id");
+
+        copyToClipboard(documentId);
+
+        // Change button text to "Copied"
+        copyButton.text("Copied!");
+
+        // Revert button text after 0.5 seconds
+        setTimeout(function () {
+          copyButton.text("Copy Document ID");
+        }, 500);
+      });
+
+      // Helper function to copy the Document ID to the clipboard
+      function copyToClipboard(text) {
+        var tempInput = $("<input>");
+        $("body").append(tempInput);
+        tempInput.val(text).select();
+        document.execCommand("copy");
+        tempInput.remove();
+      }
     </script>
 
     <!-- //gallery block -->
