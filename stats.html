@@ -508,20 +508,20 @@
               // Create table row with contact information
               var row = $(`
           <tr>
-            <td><h6>${index + 1}</h6></td>
-            <td><h6>${data.name}</h6></td>
-            <td><h6>${data.email}</h6></td>
-            <td><h6>${data.phone}</h6></td>
-            <td><h6>${data.subject}</h6></td>
-            <td><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
-            <td><h6>${new Date(data.currentTime).toLocaleTimeString([], {
+            <td class="text-center"><h6>${index + 1}</h6></td>
+            <td class="text-center"><h6>${data.name}</h6></td>
+            <td class="text-center"><h6>${data.email}</h6></td>
+            <td class="text-center"><h6>${data.phone}</h6></td>
+            <td class="text-center"><h6>${data.subject}</h6></td>
+            <td class="text-center"><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
+            <td class="text-center"><h6>${new Date(data.currentTime).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
               hour12: true,
             })}</h6></td>
-            <td><h6>${data.message}</h6></td>
-            <td><h6>${version}</h6></td>
-            <td><h6>${key}</h6></td>
+            <td class="text-center"><h6>${data.message}</h6></td>
+            <td class="text-center"><h6>${version}</h6></td>
+            <td class="text-center"><h6>${key}</h6></td>
           </tr>
         `);
 
