@@ -53,6 +53,12 @@
       "description": "Welcome to Galactic Conquest, an immersive space battle game that will transport you to the far reaches of the universe. Prepare for an epic journey filled with intense battles, strategic decision-making, and the thrill of conquering the galaxy.",
       "owner": "Vivek Padia",
       "github": "https://github.com/Vpadia717/Galactic_Conquest"
+    },
+    {
+      "title": "NeuroThreads",
+      "description": "NeuroThreads is an advanced fashion image classification project that utilizes neural networks and deep learning techniques to accurately identify different types of clothing items. The project is built using TensorFlow and tf.keras, powerful libraries for machine learning and deep neural networks.",
+      "owner": "Vivek Padia",
+      "github": "https://github.com/Vpadia717/NeuroThreads"
     }
   ]
 }
