@@ -22,6 +22,8 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
   </head>
@@ -241,22 +243,22 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active animate-right">
+            <ul class="navbar-nav ml-auto  animate-right">
+              <li class="nav-item active">
                 <a class="nav-link" href="index"
                   >Home <span class="sr-only">(current)</span></a
                 >
               </li>
-              <li class="nav-item @@about__active animate-right">
+              <li class="nav-item @@about__active">
                 <a class="nav-link" href="about">About</a>
               </li>
-              <li class="nav-item @@project__active animate-right">
+              <li class="nav-item @@project__active">
                 <a class="nav-link" href="projects">Projects</a>
               </li>
               <li class="nav-item @@designs__active">
                 <a class="nav-link" href="designs">Designs</a>
               </li>
-              <li class="nav-item @@contact__active animate-right">
+              <li class="nav-item @@contact__active">
                 <a class="nav-link" href="contact">Contact</a>
               </li>
               <li
@@ -301,7 +303,7 @@
           </script>
 
           <!-- toggle switch for light and dark theme -->
-          <div class="mobile-position animate-right">
+          <div class="mobile-position">
             <nav class="navigation">
               <div class="theme-switch-wrapper">
                 <label class="theme-switch" for="checkbox">
@@ -318,6 +320,30 @@
         </nav>
       </div>
     </header>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animation for the navbar
+        anime({
+          targets: ".animate-left, .animate-right",
+          translateX: [-100, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 1000,
+          delay: anime.stagger(100),
+        });
+
+        // Animation for the theme switch
+        anime({
+          targets: ".theme-switch-wrapper",
+          translateY: [20, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 800,
+          delay: 1000,
+        });
+      });
+    </script>
     <!-- //header -->
 
     <!-- banner section -->
@@ -337,8 +363,8 @@
               A highly <b>organized</b>, <b>innovative</b>, and
               <b>goal-driven</b> undergraduate with
               <b>exceptional communication</b>, <b>problem-solving</b>, and
-              <b>leadership abilities</b>, coupled with a <b>passion</b> for exploring
-              the vast realm of <code>Information Technology</code>.
+              <b>leadership abilities</b>, coupled with a <b>passion</b> for
+              exploring the vast realm of <code>Information Technology</code>.
             </p>
             <div class="mt-sm-5 mt-4 animate-left">
               <a class="btn btn-primary btn-style mr-sm-2" href="projects"
@@ -866,12 +892,12 @@
     <!-- freelance hire me -->
     <section class="w3l-grid-quote text-center py-5">
       <div class="container py-3">
-        <h6 class="title-small">Let's Collaborate</h6>
-        <h3 class="title-big mb-md-5 mb-4">
+        <h6 class="title-small animate-left">Let's Collaborate</h6>
+        <h3 class="title-big mb-md-5 mb-4 animate-left">
           Ready to Start a Project? Hire Me.
         </h3>
-        <a href="contact" class="btn btn-style btn-primary mr-2">Hire Me </a>
-        <a href="contact" class="btn btn-style btn-outline-primary"
+        <a href="contact" class="btn btn-style btn-primary mr-2 fade-in-right">Hire Me </a>
+        <a href="contact" class="btn btn-style btn-outline-primary fade-left"
           >Get in Touch</a
         >
       </div>
