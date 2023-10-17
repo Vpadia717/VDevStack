@@ -225,7 +225,7 @@
     <header id="site-header" class="fixed-top">
       <div class="container">
         <nav class="navbar navbar-expand-lg stroke">
-          <a class="navbar-brand animate-left" href="index">
+          <a class="navbar-brand" href="index">
             <span class="fa fa-code"></span>
             V <b class="mainTitle">DevStack</b>
           </a>
@@ -243,7 +243,7 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ml-auto  animate-right">
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="index"
                   >Home <span class="sr-only">(current)</span></a
@@ -325,8 +325,18 @@
       document.addEventListener("DOMContentLoaded", function () {
         // Animation for the navbar
         anime({
-          targets: ".animate-left, .animate-right",
+          targets: ".animate-left",
           translateX: [-100, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 1000,
+          delay: anime.stagger(100),
+        });
+
+        // Animation for the right
+        anime({
+          targets: ".animate-right",
+          translateX: [100, 0],
           opacity: [0, 1],
           easing: "easeInOutQuad",
           duration: 1000,
@@ -335,7 +345,7 @@
 
         // Animation for the theme switch
         anime({
-          targets: ".theme-switch-wrapper",
+          targets: ".fade-in",
           translateY: [20, 0],
           opacity: [0, 1],
           easing: "easeInOutQuad",
@@ -382,7 +392,7 @@
             data-aos="fade-left"
             id="image-page"
           >
-            <div class="img-effect text-lg-center animate-right">
+            <div class="img-effect text-lg-center fade-in">
               <img
                 src="assets/images/photo.svg"
                 alt="myphoto"
@@ -405,14 +415,14 @@
                 <img
                   src="assets/images/myphoto.jpg"
                   alt=""
-                  class="radius-image img-fluid animate-left"
+                  class="radius-image img-fluid fade-in"
                 />
               </div>
             </div>
-            <div class="col-lg-8 mt-lg-0 mt-5">
-              <h5 class="title-small mb-2 animate-right">About Me</h5>
-              <h3 class="title-big animate-right">Vivek Padia</h3>
-              <p class="mt-4 animate-right">
+            <div class="col-lg-8 mt-lg-0 mt-5 animate-right">
+              <h5 class="title-small mb-2">About Me</h5>
+              <h3 class="title-big">Vivek Padia</h3>
+              <p class="mt-4">
                 I am a skilled <strong>Full Stack Developer</strong> with a
                 strong focus on <b>UI/UX design</b>. Proficient in
                 <code>HTML</code>, <code>CSS</code>, <code>JavaScript</code>,
@@ -432,7 +442,7 @@
               <a
                 href="Resume.pdf"
                 download="Resume.pdf"
-                class="btn btn-style btn-primary mt-lg-5 mt-4 animate-right"
+                class="btn btn-style btn-primary mt-lg-5 mt-4"
               >
                 <b
                   ><i class="fa fa-cloud-download" aria-hidden="true"></i>
@@ -486,10 +496,10 @@
           <h3 class="title-big text-center mb-sm-5 mb-4 animate-left">
             Turning Concepts into Tangible Solutions
           </h3>
-          <div class="row">
+          <div class="row fade-in">
             <div class="col-md-12 mx-auto pr-2">
               <div class="owl-two owl-carousel owl-theme">
-                <div class="item animate-right">
+                <div class="item">
                   <div class="card">
                     <div class="box-wrap">
                       <div class="icon">
@@ -507,7 +517,7 @@
                   </div>
                 </div>
 
-                <div class="item animate-right">
+                <div class="item">
                   <div class="card">
                     <div class="box-wrap">
                       <div class="icon">
@@ -525,7 +535,7 @@
                   </div>
                 </div>
 
-                <div class="item animate-right">
+                <div class="item">
                   <div class="card">
                     <div class="box-wrap">
                       <div class="icon">
@@ -543,7 +553,7 @@
                   </div>
                 </div>
 
-                <div class="item animate-right">
+                <div class="item">
                   <div class="card">
                     <div class="box-wrap">
                       <div class="icon">
@@ -561,7 +571,7 @@
                   </div>
                 </div>
 
-                <div class="item animate-right">
+                <div class="item">
                   <div class="card">
                     <div class="box-wrap">
                       <div class="icon">
@@ -579,7 +589,7 @@
                   </div>
                 </div>
 
-                <div class="item animate-right">
+                <div class="item">
                   <div class="card">
                     <div class="box-wrap">
                       <div class="icon">
@@ -613,7 +623,7 @@
         <h3 class="title-big text-center mb-sm-5 mb-4 animate-left">
           Demonstrating Excellence
         </h3>
-        <div class="row stats-con animate-right">
+        <div class="row stats-con fade-in">
           <div class="col-sm-3 col-6 stats_info counter_grid">
             <span class="fa fa-code"></span>
             <p class="counter">56</p>
@@ -896,7 +906,9 @@
         <h3 class="title-big mb-md-5 mb-4 animate-left">
           Ready to Start a Project? Hire Me.
         </h3>
-        <a href="contact" class="btn btn-style btn-primary mr-2 fade-in-right">Hire Me </a>
+        <a href="contact" class="btn btn-style btn-primary mr-2 fade-in-right"
+          >Hire Me
+        </a>
         <a href="contact" class="btn btn-style btn-outline-primary fade-left"
           >Get in Touch</a
         >
@@ -910,13 +922,13 @@
         <div class="footer-content">
           <div class="row">
             <div class="col-lg-8 footer-left">
-              <p class="m-0">
+              <p class="m-0 animate-left">
                 &copy; 2023 V <b>DevStack</b>. Designed by
                 <a href="index">Vivek Padia</a>
               </p>
             </div>
             <div
-              class="col-lg-4 footer-right text-lg-right text-center mt-lg-0 mt-3"
+              class="col-lg-4 footer-right text-lg-right text-center mt-lg-0 mt-3 animate-right"
             >
               <ul class="social m-0 p-0">
                 <li>
@@ -945,7 +957,12 @@
       </div>
 
       <!-- Scroll to top button -->
-      <button onclick="topFunction()" id="movetop" title="Go to top">
+      <button
+        onclick="topFunction()"
+        id="movetop"
+        title="Go to top"
+        class="fade-in"
+      >
         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
       </button>
       <script>

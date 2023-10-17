@@ -24,6 +24,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   </head>
 
   <body>
@@ -156,12 +158,46 @@
     </header>
     <!-- //header -->
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animation for the navbar
+        anime({
+          targets: ".animate-left",
+          translateX: [-100, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 1000,
+          delay: anime.stagger(100),
+        });
+
+        // Animation for the right
+        anime({
+          targets: ".animate-right",
+          translateX: [100, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 1000,
+          delay: anime.stagger(100),
+        });
+
+        // Animation for the theme switch
+        anime({
+          targets: ".fade-in",
+          translateY: [20, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 800,
+          delay: 1000,
+        });
+      });
+    </script>
+
     <!-- about breadcrumb -->
     <section class="w3l-about-breadcrumb text-center">
       <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
         <div class="container py-2">
-          <h2 class="title">About</h2>
-          <ul class="breadcrumbs-custom-path mt-2">
+          <h2 class="title animate-left">About</h2>
+          <ul class="breadcrumbs-custom-path mt-2 animate-left">
             <li><a href="index">Home</a></li>
             <li><i class="fa fa-angle-right mx-2" aria-hidden="true"></i></li>
             <li class="active">About</li>
@@ -181,37 +217,37 @@
                 <img
                   src="assets/images/myphoto.jpg"
                   alt=""
-                  class="radius-image img-fluid"
+                  class="radius-image img-fluid fade-in"
                 />
               </div>
             </div>
             <div class="col-lg-8 mt-lg-0 mt-5">
-              <h5 class="title-small mb-2">
+              <h5 class="title-small mb-2 animate-right">
                 Welcome, I am a Full Stack Developer
               </h5>
-              <h3 class="title-big">
+              <h3 class="title-big animate-right">
                 With Over 3 Years of Professional Experience
               </h3>
-              <p class="mt-4">
+              <p class="mt-4 animate-right">
                 I deliver high-quality solutions that meet my clients' needs.
                 With a strong technical background and a passion for innovation,
                 I create efficient web applications. My expertise ensures
                 exceptional user experiences and seamless functionality.
               </p>
               <div class="my-info mt-4">
-                <div class="single-info">
+                <div class="single-info animate-right">
                   <span>Name:</span>
                   <p>Vivek Padia</p>
                 </div>
-                <div class="single-info">
+                <div class="single-info animate-right">
                   <span>Age:</span>
                   <p>20 Years</p>
                 </div>
-                <div class="single-info">
+                <div class="single-info animate-right">
                   <span>Location:</span>
                   <p>Gujarat, India</p>
                 </div>
-                <div class="single-info">
+                <div class="single-info animate-right">
                   <span>Email:</span>
                   <p>
                     <a href="mailto:vivekpadia2706@gmail.com"
@@ -220,7 +256,7 @@
                   </p>
                 </div>
               </div>
-              <div class="my-social mt-lg-5 mt-4">
+              <div class="my-social mt-lg-5 mt-4 animate-right">
                 <a
                   href="Resume.pdf"
                   class="btn btn-style btn-primary"
@@ -267,18 +303,18 @@
     <!-- about page second section -->
     <section class="py-5 w3l-resume">
       <div class="container py-lg-5 py-3">
-        <h5 class="title-small mb-2">Welcome</h5>
-        <h3 class="title-big mb-4">
+        <h5 class="title-small mb-2 animate-left">Welcome</h5>
+        <h3 class="title-big mb-4 animate-left">
           Empower Your Business with Innovative Full Stack Development
         </h3>
-        <p>
+        <p class="animate-left">
           I am an experienced Full Stack Developer based in Jamnagar, Gujarat,
           India, dedicated to delivering exceptional software solutions. With a
           deep understanding and proficiency in multiple programming languages,
           I possess a versatile skill set that enables me to tackle complex
           challenges across various development domains.
         </p>
-        <div class="row features-w3pvt-main mt-5 pt-md-3" id="features">
+        <div class="row features-w3pvt-main mt-5 pt-md-3 fade-in" id="features">
           <div class="col-lg-4 col-md-6 feature-gird">
             <div class="row features-hny-inner-gd">
               <div class="col-md-2 col-2 featured_grid_left">
@@ -331,15 +367,15 @@
         <div class="container">
           <div class="content-info-in row">
             <div class="content-gd col-lg-5">
-              <h3 class="title-big mb-4">Driven by the Pursuit of Success</h3>
-              <p>
+              <h3 class="title-big mb-4 animate-left">Driven by the Pursuit of Success</h3>
+              <p class="animate-left">
                 With a relentless drive for excellence, I am motivated to
                 achieve success in every endeavor. I believe in delivering
                 top-notch solutions that surpass expectations and drive
                 meaningful outcomes.
               </p>
             </div>
-            <div class="content-gd col-lg-6 offset-lg-1">
+            <div class="content-gd col-lg-6 offset-lg-1 animate-right ">
               <div class="progress-info">
                 <h6 class="progress-tittle">UI/UX Design</h6>
                 <div class="progress">
@@ -401,7 +437,7 @@
 
     <!-- subscribe block -->
     <section class="abouthy-img-grids">
-      <div class="img-one">
+      <div class="img-one animate-left">
         <img
           src="assets/images/g5.jpg"
           alt=" "
@@ -409,7 +445,7 @@
           style="border-top-left-radius: 10%; border-bottom-left-radius: 10%"
         />
       </div>
-      <div class="img-one content-mid">
+      <div class="img-one content-mid fade-in">
         <h3 class="title-big">
           Stay Updated, Subscribe to Our Free Newsletter!
         </h3>
@@ -423,7 +459,7 @@
           <button type="submit" class="btn">Subscribe</button>
         </form>
       </div>
-      <div class="img-one">
+      <div class="img-one animate-right">
         <img
           src="assets/images/g3.jpg"
           alt=" "
@@ -576,11 +612,11 @@
     <section class="w3l-services">
       <div class="w3l-achievements py-5" id="services">
         <div class="container py-lg-5">
-          <h5 class="title-small text-center">Recognitions</h5>
-          <h3 class="title-big text-center mb-sm-5 mb-4">
+          <h5 class="title-small text-center animate-left">Recognitions</h5>
+          <h3 class="title-big text-center mb-sm-5 mb-4 animate-left">
             Personal Achievements
           </h3>
-          <div class="row">
+          <div class="row fade-in">
             <div class="col-lg-6 item">
               <div class="card">
                 <div class="box-wrap">
@@ -653,10 +689,10 @@
     <!-- gallery block -->
     <section class="py-5 w3l-resume">
       <div class="container py-lg-5 py-3">
-        <h2 class="title-small text-center mb-4">
+        <h2 class="title-small text-center mb-4 animate-left">
           Professional Certificate Gallery
         </h2>
-        <h3 class="title-big text-center mb-sm-5 mb-4 text-center">
+        <h3 class="title-big text-center mb-sm-5 mb-4 text-center animate-left">
           Explore some of the certificates I have earned during my professional
           journey.
         </h3>
@@ -771,13 +807,13 @@
         <div class="footer-content">
           <div class="row">
             <div class="col-lg-8 footer-left">
-              <p class="m-0">
+              <p class="m-0 animate-left">
                 &copy; 2023 V <b>DevStack</b>. Designed by
                 <a href="index">Vivek Padia</a>
               </p>
             </div>
             <div
-              class="col-lg-4 footer-right text-lg-right text-center mt-lg-0 mt-3"
+              class="col-lg-4 footer-right text-lg-right text-center mt-lg-0 mt-3 animate-right"
             >
               <ul class="social m-0 p-0">
                 <li>
@@ -806,7 +842,7 @@
       </div>
 
       <!-- Scroll to top button -->
-      <button onclick="topFunction()" id="movetop" title="Go to top">
+      <button onclick="topFunction()" id="movetop" title="Go to top" class="fade-in">
         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
       </button>
       <script>

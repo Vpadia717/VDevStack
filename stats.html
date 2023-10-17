@@ -26,6 +26,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   </head>
 
   <body>
@@ -159,6 +161,40 @@
     </header>
     <!-- //header -->
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animation for the navbar
+        anime({
+          targets: ".animate-left",
+          translateX: [-100, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 1000,
+          delay: anime.stagger(100),
+        });
+
+        // Animation for the right
+        anime({
+          targets: ".animate-right",
+          translateX: [100, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 1000,
+          delay: anime.stagger(100),
+        });
+
+        // Animation for the theme switch
+        anime({
+          targets: ".fade-in",
+          translateY: [20, 0],
+          opacity: [0, 1],
+          easing: "easeInOutQuad",
+          duration: 800,
+          delay: 1000,
+        });
+      });
+    </script>
+
     <!-- projects breadcrumb -->
     <section class="w3l-about-breadcrumb text-center">
       <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
@@ -178,14 +214,14 @@
     <section class="w3l-services">
       <div class="w3l-achievements py-5" id="services">
         <div class="container py-lg-5">
-          <h2 class="title-small text-center mb-4">Website Statistics</h2>
-          <h3 class="title-big text-center mb-sm-5 mb-4 text-center">
+          <h2 class="title-small text-center mb-4 animate-left">Website Statistics</h2>
+          <h3 class="title-big text-center mb-sm-5 mb-4 text-center animate-left">
             Explore the statistics and data of our website.
           </h3>
 
           <!-- Visitor Table -->
-          <h4 class="text-center mb-3">Visitor Table</h4>
-          <div class="table-responsive mt-2">
+          <h4 class="text-center mb-3 animate-left">Visitor Table</h4>
+          <div class="table-responsive mt-2 fade-in">
             <table class="table table-hover table-striped">
               <thead>
                 <tr>
@@ -218,8 +254,8 @@
           </div>
 
           <!-- Contact Table -->
-          <h4 class="text-center mb-3 mt-5">Contact Table</h4>
-          <div class="table-responsive mt-2">
+          <h4 class="text-center mb-3 mt-5 animate-left">Contact Table</h4>
+          <div class="table-responsive mt-2 fade-in">
             <table class="table table-hover table-striped">
               <thead>
                 <tr>
@@ -238,7 +274,7 @@
               <tbody id="contact-data"></tbody>
             </table>
           </div>
-          <div class="mt-2 text-center">
+          <div class="mt-2 text-center animate-right">
             <button
               class="btn btn-primary btn-style mr-sm-2"
               id="show-more-contact-btn"
@@ -254,8 +290,8 @@
           </div>
 
           <!-- Subscribed Table -->
-          <h4 class="text-center mb-3 mt-5">Subscribe Table</h4>
-          <div class="table-responsive mt-2">
+          <h4 class="text-center mb-3 mt-5 animate-left">Subscribe Table</h4>
+          <div class="table-responsive mt-2 fade-in">
             <table class="table table-hover table-striped">
               <thead>
                 <tr>
@@ -272,7 +308,7 @@
               <tbody id="subscribed-data"></tbody>
             </table>
           </div>
-          <div class="mt-2 text-center">
+          <div class="mt-2 text-center animate-right">
             <button
               class="btn btn-primary btn-style mr-sm-2"
               id="show-more-subscribed-btn"
@@ -513,8 +549,12 @@
             <td class="text-center"><h6>${data.email}</h6></td>
             <td class="text-center"><h6>${data.phone}</h6></td>
             <td class="text-center"><h6>${data.subject}</h6></td>
-            <td class="text-center"><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
-            <td class="text-center"><h6>${new Date(data.currentTime).toLocaleTimeString([], {
+            <td class="text-center"><h6>${new Date(
+              data.currentTime
+            ).toLocaleDateString()}</h6></td>
+            <td class="text-center"><h6>${new Date(
+              data.currentTime
+            ).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
               hour12: true,
@@ -629,8 +669,12 @@
           <tr>
             <td class="text-center"><h6>${index + 1}</h6></td>
             <td class="text-center"><h6>${data.email}</h6></td>
-            <td class="text-center"><h6>${new Date(data.currentTime).toLocaleDateString()}</h6></td>
-            <td class="text-center"><h6>${new Date(data.currentTime).toLocaleTimeString([], {
+            <td class="text-center"><h6>${new Date(
+              data.currentTime
+            ).toLocaleDateString()}</h6></td>
+            <td class="text-center"><h6>${new Date(
+              data.currentTime
+            ).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
               hour12: true,

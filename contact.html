@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="assets/css/style-starter.css" />
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
 </head>
 
 <body>
@@ -53,7 +56,7 @@
   <header id="site-header" class="fixed-top">
     <div class="container">
       <nav class="navbar navbar-expand-lg stroke">
-        <a class="navbar-brand" href="index">
+        <a class="navbar-brand animate-left" href="index">
           <span class="fa fa-code"></span>
           V <b class="mainTitle">DevStack</b>
         </a>
@@ -63,7 +66,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto animate-left">
             <li class="nav-item @@index__active">
               <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -119,7 +122,7 @@
         <!-- toggle switch for light and dark theme -->
         <div class="mobile-position">
           <nav class="navigation">
-            <div class="theme-switch-wrapper">
+            <div class="theme-switch-wrapper fade-in">
               <label class="theme-switch" for="checkbox">
                 <input type="checkbox" id="checkbox" />
                 <div class="mode-container">
@@ -136,12 +139,46 @@
   </header>
   <!-- //header -->
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Animation for the navbar
+      anime({
+        targets: ".animate-left",
+        translateX: [-100, 0],
+        opacity: [0, 1],
+        easing: "easeInOutQuad",
+        duration: 1000,
+        delay: anime.stagger(100),
+      });
+
+      // Animation for the right
+      anime({
+        targets: ".animate-right",
+        translateX: [100, 0],
+        opacity: [0, 1],
+        easing: "easeInOutQuad",
+        duration: 1000,
+        delay: anime.stagger(100),
+      });
+
+      // Animation for the theme switch
+      anime({
+        targets: ".fade-in",
+        translateY: [20, 0],
+        opacity: [0, 1],
+        easing: "easeInOutQuad",
+        duration: 800,
+        delay: 1000,
+      });
+    });
+  </script>
+
   <!-- contact breadcrumb -->
   <section class="w3l-about-breadcrumb text-center">
     <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
       <div class="container py-2">
-        <h2 class="title">Contact</h2>
-        <ul class="breadcrumbs-custom-path mt-2">
+        <h2 class="title animate-left">Contact</h2>
+        <ul class="breadcrumbs-custom-path mt-2 animate-left">
           <li><a href="index">Home</a></li>
           <li><i class="fa fa-angle-right mx-2" aria-hidden="true"></i></li>
           <li class="active">Contact Me </li>
@@ -158,7 +195,7 @@
       <div class="container">
         <div class="d-grid contact-view">
           <div class="cont-details">
-            <div class="cont-top">
+            <div class="cont-top animate-left">
               <div class="cont-left text-center">
                 <span class="fa fa-phone text-primary"></span>
               </div>
@@ -167,7 +204,7 @@
                 <p><a href="tel:+91 901 669 4506">+91 901 669 4506</a></p>
               </div>
             </div>
-            <div class="cont-top margin-up">
+            <div class="cont-top margin-up animate-left">
               <div class="cont-left text-center">
                 <span class="fa fa-phone text-primary"></span>
               </div>
@@ -176,7 +213,7 @@
                 <p><a href="https://wa.me/9016694506">+91 901 669 4506</a></p>
               </div>
             </div>
-            <div class="cont-top margin-up">
+            <div class="cont-top margin-up animate-left">
               <div class="cont-left text-center">
                 <span class="fa fa-envelope-o text-primary"></span>
               </div>
@@ -185,7 +222,7 @@
                 <p><a href="mailto:vivekpadia2706@gmail.com" class="mail">vivekpadia2706@gmail.com</a></p>
               </div>
             </div>
-            <div class="cont-top margin-up">
+            <div class="cont-top margin-up animate-left">
               <div class="cont-left text-center">
                 <span class="fa fa-map-marker text-primary"></span>
               </div>
@@ -195,7 +232,7 @@
               </div>
             </div>
           </div>
-          <div class="map-content-9">
+          <div class="map-content-9 animate-right">
             <form id="contactForm" method="post" enctype="text/plain">
               <div class="twice-two">
                 <input type="text" class="form-control" name="w3lName" id="w3lName" placeholder="Name" required>
@@ -389,7 +426,7 @@
   </script>
 
   <!-- /contact1 -->
-  <div class="map-iframe">
+  <div class="map-iframe fade-in">
     <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d428.41454338717114!2d70.06534932131396!3d22.48447193173227!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1686063416744!5m2!1sen!2sin" width="100%" height="500" frameborder="0" style="border: 0px;" allowfullscreen=""></iframe>
   </div>
   <!-- //contact block -->
@@ -399,12 +436,12 @@
       <div class="footer-content">
         <div class="row">
           <div class="col-lg-8 footer-left">
-            <p class="m-0">
+            <p class="m-0 animate-left">
               &copy; 2023 V <b>DevStack</b>. Designed by
               <a href="index">Vivek Padia</a>
             </p>
           </div>
-          <div class="col-lg-4 footer-right text-lg-right text-center mt-lg-0 mt-3">
+          <div class="col-lg-4 footer-right text-lg-right text-center mt-lg-0 mt-3 animate-right">
             <ul class="social m-0 p-0">
               <li>
                 <a href="https://www.facebook.com/vikky.padia" target="_blank"><span class="fa fa-facebook-square"></span></a>
@@ -422,7 +459,7 @@
     </div>
 
     <!-- Scroll to top button -->
-    <button onclick="topFunction()" id="movetop" title="Go to top">
+    <button onclick="topFunction()" id="movetop" title="Go to top" class="fade-in">
       <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
     </button>
     <script>
