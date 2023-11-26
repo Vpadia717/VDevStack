@@ -367,7 +367,9 @@
         <div class="container">
           <div class="content-info-in row">
             <div class="content-gd col-lg-5">
-              <h3 class="title-big mb-4 animate-left">Driven by the Pursuit of Success</h3>
+              <h3 class="title-big mb-4 animate-left">
+                Driven by the Pursuit of Success
+              </h3>
               <p class="animate-left">
                 With a relentless drive for excellence, I am motivated to
                 achieve success in every endeavor. I believe in delivering
@@ -375,7 +377,7 @@
                 meaningful outcomes.
               </p>
             </div>
-            <div class="content-gd col-lg-6 offset-lg-1 animate-right ">
+            <div class="content-gd col-lg-6 offset-lg-1 animate-right">
               <div class="progress-info">
                 <h6 class="progress-tittle">UI/UX Design</h6>
                 <div class="progress">
@@ -808,7 +810,8 @@
           <div class="row">
             <div class="col-lg-8 footer-left">
               <p class="m-0 animate-left">
-                &copy; 2023 V <b>DevStack</b>. Designed by
+                &copy; <span id="currentYear"></span> V <b>DevStack</b>.
+                Designed by
                 <a href="index">Vivek Padia</a>
               </p>
             </div>
@@ -842,7 +845,12 @@
       </div>
 
       <!-- Scroll to top button -->
-      <button onclick="topFunction()" id="movetop" title="Go to top" class="fade-in">
+      <button
+        onclick="topFunction()"
+        id="movetop"
+        title="Go to top"
+        class="fade-in"
+      >
         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
       </button>
       <script>
@@ -882,6 +890,8 @@
 
     <!-- /typig-text-->
     <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
       // Disable right-click
       document.addEventListener("contextmenu", function (e) {
         e.preventDefault();

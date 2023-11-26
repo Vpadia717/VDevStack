@@ -380,7 +380,7 @@
           <div class="row">
             <div class="col-lg-8 footer-left">
               <p class="m-0 animate-left">
-                &copy; 2023 V <b>DevStack</b>. Designed by
+                &copy; <span id="currentYear"></span> V <b>DevStack</b>. Designed by
                 <a href="index">Vivek Padia</a>
               </p>
             </div>
@@ -454,6 +454,7 @@
 
     <!-- /typig-text-->
     <script>
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
       // Disable right-click
       document.addEventListener("contextmenu", function (e) {
         e.preventDefault();
