@@ -185,41 +185,15 @@
       // Function to animate the loader fade-out and display the header section
       function animateLoader() {
         var loaderContainer = document.querySelector(".loader-container");
-
-        setTimeout(function () {
-          loaderContainer.style.animation = "fade-out 0.5s ease-out forwards";
-          loaderContainer.style.display = "none";
-        }, 250); // 0.1 seconds
+        loaderContainer.style.animation = "fade-out 0.5s ease-out forwards";
       }
-
-      // Call the animation functions when the page finishes loading
-      window.addEventListener("load", function () {
+    
+      // Call the animation functions when the document is ready
+      document.addEventListener("DOMContentLoaded", function () {
         animateLoader();
       });
     </script>
-
-    <!-- <script>
-      function animateElements() {
-        var textElements = document.querySelectorAll(".animate-left");
-        var imageElements = document.querySelectorAll(".animate-right");
-
-        textElements.forEach(function (element, index) {
-          setTimeout(function () {
-            element.classList.add("fly-in-left");
-          }, index * 200);
-        });
-
-        imageElements.forEach(function (element, index) {
-          setTimeout(function () {
-            element.classList.add("fade-in-right");
-          }, index * 200);
-        });
-      }
-
-      window.addEventListener("load", function () {
-        animateElements();
-      });
-    </script> -->
+    
 
     <!-- header -->
     <header id="site-header" class="fixed-top">
