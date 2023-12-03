@@ -29,33 +29,31 @@
   </head>
 
   <body>
-    <!-- <script>
-    // Function to animate the fly-in effect for the navbar brand and the fade-in effect for navigation items and toggle switch
-    function animateNavbarItems() {
-      var navbarBrand = document.querySelector(".navbar-brand");
-      var navbarItems = document.querySelectorAll(".nav-item");
-      var themeMode = document.querySelectorAll(".mobile-position");
+    <!-- loader -->
+    <div class="loader-container">
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- //loader -->
+    <script>
+      // Function to animate the loader fade-out and display the header section
+      function animateLoader() {
+        var loaderContainer = document.querySelector(".loader-container");
+        (loaderContainer.style.animation = "fade-out 0.5s ease-out forwards"),
+          (loaderContainer.style.display = "none");
+      }
 
-      navbarBrand.classList.add("fly-in-left");
-
-      navbarItems.forEach(function (item, index) {
-        setTimeout(function () {
-          item.classList.add("fade-in-right");
-        }, index * 150); // Adjust the delay (150ms) based on your preference
-      });
-
-      themeMode.forEach(function (item, index) {
-        setTimeout(function () {
-          item.classList.add("fade-in-right");
-        }, index * 150); // Adjust the delay (150ms) based on your preference
-      });
-    }
-
-    // Call the animation functions when the page finishes loading
-    window.addEventListener("load", function () {
-      animateNavbarItems();
-    });
-  </script> -->
+      // Call the animation functions when the document is ready
+      document.onreadystatechange = function () {
+        "complete" === document.readyState && animateLoader();
+      };
+    </script>
 
     <!-- header -->
     <header id="site-header" class="fixed-top">

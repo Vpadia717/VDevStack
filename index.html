@@ -185,13 +185,13 @@
       // Function to animate the loader fade-out and display the header section
       function animateLoader() {
         var loaderContainer = document.querySelector(".loader-container");
-        loaderContainer.style.animation = "fade-out 0.5s ease-out forwards";
+        loaderContainer.style.animation = "fade-out 0.5s ease-out forwards", loaderContainer.style.display = "none";
       }
     
       // Call the animation functions when the document is ready
-      document.addEventListener("DOMContentLoaded", function () {
-        animateLoader();
-      });
+      document.onreadystatechange = function()  {
+        "complete" === document.readyState && animateLoader();
+      };
     </script>
     
 

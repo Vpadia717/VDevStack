@@ -26,33 +26,31 @@
   </head>
 
   <body>
-    <!-- <script>
-    // Function to animate the fly-in effect for the navbar brand and the fade-in effect for navigation items and toggle switch
-    function animateNavbarItems() {
-      var navbarBrand = document.querySelector(".navbar-brand");
-      var navbarItems = document.querySelectorAll(".nav-item");
-      var themeMode = document.querySelectorAll(".mobile-position");
+    <!-- loader -->
+    <div class="loader-container">
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- //loader -->
+    <script>
+      // Function to animate the loader fade-out and display the header section
+      function animateLoader() {
+        var loaderContainer = document.querySelector(".loader-container");
+        (loaderContainer.style.animation = "fade-out 0.5s ease-out forwards"),
+          (loaderContainer.style.display = "none");
+      }
 
-      navbarBrand.classList.add("fly-in-left");
-
-      navbarItems.forEach(function (item, index) {
-        setTimeout(function () {
-          item.classList.add("fade-in-right");
-        }, index * 150); // Adjust the delay (150ms) based on your preference
-      });
-
-      themeMode.forEach(function (item, index) {
-        setTimeout(function () {
-          item.classList.add("fade-in-right");
-        }, index * 150); // Adjust the delay (150ms) based on your preference
-      });
-    }
-
-    // Call the animation functions when the page finishes loading
-    window.addEventListener("load", function () {
-      animateNavbarItems();
-    });
-  </script> -->
+      // Call the animation functions when the document is ready
+      document.onreadystatechange = function () {
+        "complete" === document.readyState && animateLoader();
+      };
+    </script>
 
     <!-- header -->
     <header id="site-header" class="fixed-top">
@@ -208,8 +206,12 @@
     <section class="w3l-services">
       <div class="blog py-5" id="services">
         <div class="container py-lg-5">
-          <h2 class="title-small text-center mb-4 animate-left">Designs Gallery</h2>
-          <h3 class="title-big text-center mb-sm-5 mb-4 text-center animate-left">
+          <h2 class="title-small text-center mb-4 animate-left">
+            Designs Gallery
+          </h2>
+          <h3
+            class="title-big text-center mb-sm-5 mb-4 text-center animate-left"
+          >
             Explore some of the designs I have created.
           </h3>
           <div class="row gallery" id="projectGallery">
@@ -380,7 +382,8 @@
           <div class="row">
             <div class="col-lg-8 footer-left">
               <p class="m-0 animate-left">
-                &copy; <span id="currentYear"></span> V <b>DevStack</b>. Designed by
+                &copy; <span id="currentYear"></span> V <b>DevStack</b>.
+                Designed by
                 <a href="index">Vivek Padia</a>
               </p>
             </div>
@@ -414,7 +417,12 @@
       </div>
 
       <!-- Scroll to top button -->
-      <button onclick="topFunction()" id="movetop" title="Go to top" class="fade-in">
+      <button
+        onclick="topFunction()"
+        id="movetop"
+        title="Go to top"
+        class="fade-in"
+      >
         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
       </button>
       <script>
@@ -454,7 +462,8 @@
 
     <!-- /typig-text-->
     <script>
-      document.getElementById("currentYear").textContent = new Date().getFullYear();
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
       // Disable right-click
       document.addEventListener("contextmenu", function (e) {
         e.preventDefault();
