@@ -12878,6 +12878,7 @@ a.text-dark:focus {
 /* CSS for the loader */
 .loader-container {
   position: fixed;
+  object-fit: cover;
   top: 0;
   left: 0;
   width: 100vw;
