@@ -31,33 +31,6 @@
   </head>
 
   <body>
-    <!-- <script>
-    // Function to animate the fly-in effect for the navbar brand and the fade-in effect for navigation items and toggle switch
-    function animateNavbarItems() {
-      var navbarBrand = document.querySelector(".navbar-brand");
-      var navbarItems = document.querySelectorAll(".nav-item");
-      var themeMode = document.querySelectorAll(".mobile-position");
-
-      navbarBrand.classList.add("fly-in-left");
-
-      navbarItems.forEach(function (item, index) {
-        setTimeout(function () {
-          item.classList.add("fade-in-right");
-        }, index * 150); // Adjust the delay (150ms) based on your preference
-      });
-
-      themeMode.forEach(function (item, index) {
-        setTimeout(function () {
-          item.classList.add("fade-in-right");
-        }, index * 150); // Adjust the delay (150ms) based on your preference
-      });
-    }
-
-    // Call the animation functions when the page finishes loading
-    window.addEventListener("load", function () {
-      animateNavbarItems();
-    });
-  </script> -->
 
     <!-- header -->
     <header id="site-header" class="fixed-top">
@@ -240,13 +213,13 @@
           </div>
           <div class="mt-2 text-center">
             <button
-              class="btn btn-primary btn-style mr-sm-2"
+              class="btn btn-primary btn-style mr-sm-2 rounded-pill"
               id="show-more-visitor-btn"
             >
               Show more
             </button>
             <button
-              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1"
+              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1 rounded-pill"
               id="hide-all-visitor-btn"
             >
               Hide all
@@ -276,13 +249,13 @@
           </div>
           <div class="mt-2 text-center animate-right">
             <button
-              class="btn btn-primary btn-style mr-sm-2"
+              class="btn btn-primary btn-style mr-sm-2 rounded-pill"
               id="show-more-contact-btn"
             >
               Show more
             </button>
             <button
-              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1"
+              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1 rounded-pill"
               id="hide-all-contact-btn"
             >
               Hide all
@@ -310,13 +283,13 @@
           </div>
           <div class="mt-2 text-center animate-right">
             <button
-              class="btn btn-primary btn-style mr-sm-2"
+              class="btn btn-primary btn-style mr-sm-2 rounded-pill"
               id="show-more-subscribed-btn"
             >
               Show more
             </button>
             <button
-              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1"
+              class="btn btn-outline-primary btn-style mr-sm-2 mx-sm-1 rounded-pill"
               id="hide-all-subscribed-btn"
             >
               Hide all
@@ -411,7 +384,7 @@
             <td><h6 class="text-center">${data.device}</h6></td>
             <td><h6 class="text-center">${version}</h6></td>
             <td><h6 class="text-center">${key}</h6></td>
-            <td class="text-center"><button class="copy-button btn btn-outline-primary btn-style" data-document-id="${key}">Copy Document ID</button></td>
+            <td class="text-center"><button class="copy-button btn btn-outline-primary btn-style rounded-pill" data-document-id="${key}">Copy Document ID</button></td>
           </tr>
         `);
 
@@ -682,7 +655,7 @@
             <td class="text-center"><h6>${data.device}</h6></td>
             <td class="text-center"><h6>${version}</h6></td>
             <td class="text-center"><h6>${key}</h6></td>
-            <td class="text-center"><button class="copy-subscribe-button btn btn-outline-primary btn-style" data-document-id="${key}">Copy Document ID</button></td>
+            <td class="text-center"><button class="copy-subscribe-button btn btn-outline-primary btn-style rounded-pill" data-document-id="${key}">Copy Document ID</button></td>
           </tr>
         `);
 
